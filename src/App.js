@@ -44,7 +44,7 @@ const portfolioConfig = {
       description: "A responsive and animated personal portfolio built with React and pure CSS.",
       tags: ["React", "CSS", "JavaScript"],
       imageUrl: "https://placehold.co/600x400/ffffff/343A40?text=Project+One",
-      githubLink: "https://github.com/Ashiy-Ishan/react-portfolio",
+      githubLink: "https://github.com/Seminiherath/My_portfolio",
     },
     {
       title: "Thecnology First Website",
