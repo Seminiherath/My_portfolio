@@ -1,19 +1,20 @@
 // App.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import './styles.css';
-import profile_image from '../src/assets/me.png';
+import profile_image from '../src/assets/me.jpg';
 
 // --- SVG Icons ---
 const GhIcon = () => <svg height="24" width="24" viewBox="0 0 16 16" fill="currentColor"><path fillRule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>;
 const GmIcon = () => <svg height="24" width="24" viewBox="0 0 512 512" fill="currentColor"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480V396.4c0-4 1-7.9 2.9-11.3l140.6-225.1-205.8 100c-12.1 6-26.9 3.5-36.8-5.5-12.8-11.5-12.8-30.6 .1-42.2L472.3 2.1C482 .7 492.2 .6 498.1 5.6z"></path></svg>;
 const WaIcon = () => <svg height="24" width="24" viewBox="0 0 448 512" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 221.9-99.6 221.9-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-67.6-9.5-97.2-27.2l-6.7-4-71.6 18.7L57.9 351l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></svg>;
+const LiIcon = () => <svg height="24" width="24" viewBox="0 0 448 512" fill="currentColor"><path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"/></svg>;
 
 // --- Configuration Object ---
 const portfolioConfig = {
   name: "Semini Herath",
+  headline: "Crafting Seamless Digital Experiences: From Pixel to Production.",
+  subHeadline: "I am a multifaceted creator blending UI/UX Design, Frontend Development, Graphic Design, and Quality Assurance to build intuitive, bug-free applications.",
   role: "Undergraduate Student",
-  university: "Sabaragamuwa University of Sri Lanka",
-  tagline: "• UI / UX Enthusiast • Designer",
   profilePhotoUrl: profile_image,
   githubUrl: "https://github.com/Seminiherath",
   contact: {
@@ -25,33 +26,54 @@ const portfolioConfig = {
     github: "https://github.com/Seminiherath",
   },
   about: {
-    description: "I'm a passionate undergraduate at Sabaragamuwa University of Sri Lanka, deeply interested in web development, UI UX designing and graphic designing. I love building clean, user-friendly interfaces and solving problems with code.",
-    dynamicRoles: ["Figma Designer", "UI Tinkerer"]
+    description: "I am a Computing undergraduate at Sabaragamuwa University of Sri Lanka, passionate about the entire software development lifecycle. My journey in tech began with visual communication, crafting graphic designs and brand identities. This foundation naturally evolved into UI/UX design, where I focus on prototyping intuitive user journeys using Figma.\n\nTo bring those designs to life, I expanded my toolkit into frontend development, building interactive mobile and web applications with Flutter and Kotlin. Because a great design must also function flawlessly, I am actively integrating Quality Assurance practices into my workflow. By running manual tests and usability checks, I ensure that the software I build is not only visually engaging but also robust and reliable. Whether I am designing a brand identity, coding a frontend interface, or hunting for bugs, my goal is always to deliver high-quality, user-centered digital solutions.",
+    dynamicRoles: ["Frontend Developer", "UI/UX Designer", "Graphic Designer", "QA Beginner"]
   },
-  skills: [
-    { name: "Figma", icon: "devicon-figma-plain", level: 60 },
-    { name: "Photoshop", icon: "devicon-photoshop-plain", level: 70 },
-    { name: "Java", icon: "devicon-java-plain", level: 25 },
-    { name: "HTML5", icon: "devicon-html5-plain", level: 45 },
-    { name: "CSS3", icon: "devicon-css3-plain", level: 45 },
-    { name: "JavaScript", icon: "devicon-javascript-plain", level: 35 },
-    { name: "C", icon: "devicon-c-plain", level: 45 },
-    { name: "React", icon: "devicon-react-original", level: 30 },
+  techStack: [
+    { name: "React", iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
+    { name: "Flutter", iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg" },
+    { name: "HTML5", iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" },
+    { name: "CSS3", iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" },
+    { name: "JavaScript", iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" },
+    { name: "C", iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" },
+  ],
+  designTools: [
+    { name: "Figma", iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" },
+    { name: "Photoshop", iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg" },
+    { name: "Illustrator", iconUrl: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-plain.svg" },
   ],
   projects: [
     {
       title: "Portfolio Website",
+      category: "Frontend",
       description: "A responsive and animated personal portfolio built with React and pure CSS.",
       tags: ["React", "CSS", "JavaScript"],
-      imageUrl: "https://placehold.co/600x400/ffffff/343A40?text=Project+One",
+      imageUrl: "https://placehold.co/600x400/ffffff/343A40?text=Portfolio+Website",
       githubLink: "https://github.com/Seminiherath/My_portfolio",
     },
     {
-      title: "Thecnology First Website",
+      title: "Technology First Website",
+      category: "Backend",
       description: "A robust backend system for an e-commerce platform using Java Spring Boot.",
-      tags: ["HTML", "CSS", "Javascript"],
-      imageUrl: "https://placehold.co/600x400/ffffff/343A40?text=Project+Two",
+      tags: ["Java", "Spring Boot", "HTML", "CSS"],
+      imageUrl: "https://placehold.co/600x400/ffffff/343A40?text=Technology+First",
       githubLink: "https://github.com/Seminiherath/TechnologyFirst",
+    },
+    {
+      title: "Modern UI Mobile App",
+      category: "UI/UX",
+      description: "User Interface design for a modern mobile application focusing on clean aesthetics and usability.",
+      tags: ["Figma", "UI Design", "Prototyping"],
+      imageUrl: "https://placehold.co/600x400/ffffff/343A40?text=Mobile+App+UI",
+      githubLink: "#",
+    },
+    {
+      title: "Brand Identity Design",
+      category: "Graphic Design",
+      description: "Complete branding package including logo, typography, and marketing materials.",
+      tags: ["Photoshop", "Illustrator", "Branding"],
+      imageUrl: "https://placehold.co/600x400/ffffff/343A40?text=Brand+Identity",
+      githubLink: "#",
     },
   ]
 };
@@ -90,7 +112,7 @@ const Header = ({ activeSection }) => {
   return (
     <header className="header">
       <nav className="navbar">
-        <a href="#home" className="nav-logo">S H</a>
+        <a href="#home" className="nav-logo">{portfolioConfig.name}</a>
         <ul className="nav-menu">
           {navLinks.map(link => (
             <li key={link}>
@@ -159,8 +181,12 @@ const Home = () => (
     <ParticleBackground />
     <div className="home-content">
       <div className="animate-on-scroll" style={{ animationDelay: '0.2s' }}>
-        <h1 className="home-name">{portfolioConfig.name}</h1>
-        <p className="home-tagline">{portfolioConfig.tagline}</p>
+        <h1 className="home-name">{portfolioConfig.headline}</h1>
+        <p className="home-tagline">{portfolioConfig.subHeadline}</p>
+      </div>
+      <div className="home-buttons animate-on-scroll" style={{ animationDelay: '0.3s' }}>
+        <a href="#projects" className="btn">Explore My Work</a>
+        <a href="#resume" className="btn btn-secondary">View Resume</a>
       </div>
       <div className="home-socials animate-on-scroll" style={{ animationDelay: '0.4s' }}>
         <a href={portfolioConfig.socials.github} target="_blank" rel="noopener noreferrer"><GhIcon /></a>
@@ -197,71 +223,97 @@ const About = () => {
     );
 };
 
+const Marquee = ({ items }) => (
+  <div className="marquee-container">
+    <div className="marquee-content">
+      {/* Render the array 3 times to ensure a seamless infinite scroll loop */}
+      {[...items, ...items, ...items].map((item, index) => (
+        <div className="marquee-item" key={`${item.name}-${index}`} title={item.name}>
+          <img src={item.iconUrl} alt={item.name} className="marquee-icon" />
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
 const Skills = () => (
   <section id="skills" className="skills section">
-    <h2 className="section-title animate-on-scroll">My Tech Stack</h2>
-    <div className="skills-grid">
-      {portfolioConfig.skills.map((skill, index) => (
-        <div className="skill-card animate-on-scroll" key={skill.name} style={{ animationDelay: `${index * 0.05}s` }}>
-          <div className="skill-progress-circle" style={{ '--level': `${skill.level}%` }}>
-            <div className="skill-icon-container">
-                <i className={skill.icon}></i>
-            </div>
-          </div>
-          <p className="skill-name">{skill.name}</p>
-        </div>
-      ))}
+    <h2 className="section-title animate-on-scroll">Tech Stack</h2>
+    <div className="animate-on-scroll">
+      <Marquee items={portfolioConfig.techStack} />
+    </div>
+
+    <h2 className="section-title animate-on-scroll" style={{ marginTop: '4rem' }}>Design Tools</h2>
+    <div className="animate-on-scroll">
+      <Marquee items={portfolioConfig.designTools} />
     </div>
   </section>
 );
 
-const Projects = () => (
-  <section id="projects" className="projects section">
-    <h2 className="section-title animate-on-scroll">Projects</h2>
-    <div className="projects-grid">
-      {portfolioConfig.projects.map((project, index) => (
-        <div className="project-card animate-on-scroll" key={project.title} style={{ animationDelay: `${index * 0.15}s` }}>
-          <img src={project.imageUrl} alt={project.title} className="project-image" />
-          <div className="project-content">
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <div className="project-tags">
-              {project.tags.map(tag => <span key={tag}>{tag}</span>)}
-            </div>
-            <div className="project-links">
-              <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="btn">View Code <GhIcon /></a>
+const Projects = () => {
+  const [activeFilter, setActiveFilter] = useState('All');
+  const filters = ['All', 'Frontend', 'Backend', 'UI/UX', 'Graphic Design'];
+  const filteredProjects = activeFilter === 'All' 
+    ? portfolioConfig.projects 
+    : portfolioConfig.projects.filter(p => p.category === activeFilter);
+
+  return (
+    <section id="projects" className="projects section">
+      <h2 className="section-title animate-on-scroll">Projects</h2>
+      
+      <div className="project-filters animate-on-scroll">
+        {filters.map(filter => (
+          <button 
+            key={filter}
+            className={`filter-btn ${activeFilter === filter ? 'active' : ''}`}
+            onClick={() => setActiveFilter(filter)}
+          >
+            {filter}
+          </button>
+        ))}
+      </div>
+
+      <div className="projects-grid">
+        {filteredProjects.map((project, index) => (
+          <div className="project-card animate-on-scroll" key={project.title} style={{ animationDelay: `${index * 0.15}s` }}>
+            <img src={project.imageUrl} alt={project.title} className="project-image" />
+            <div className="project-content">
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <div className="project-tags">
+                {project.tags.map(tag => <span key={tag}>{tag}</span>)}
+              </div>
+              <div className="project-links">
+                {project.githubLink !== "#" ? (
+                  <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="btn">View Code <GhIcon /></a>
+                ) : (
+                  <a href="#projects" className="btn btn-secondary">View Design</a>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      ))}
-    </div>
-    <div className="view-more-container animate-on-scroll">
-      <a href={portfolioConfig.githubUrl} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">See More on GitHub</a>
-    </div>
-  </section>
-);
+        ))}
+      </div>
+      <div className="view-more-container animate-on-scroll">
+        <a href={portfolioConfig.githubUrl} target="_blank" rel="noopener noreferrer" className="btn btn-secondary">See More on GitHub</a>
+      </div>
+    </section>
+  );
+};
 
 const Contact = () => {
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const subject = `Portfolio Contact - ${formData.get('name')}`;
-        const body = `Name: ${formData.get('name')}\nEmail: ${formData.get('email')}\n\nMessage:\n${formData.get('message')}`;
-        window.location.href = `mailto:${portfolioConfig.contact.gmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    };
     return (
         <section id="contact" className="contact section">
-            <h2 className="section-title animate-on-scroll">Get in Touch</h2>
+            <h2 className="section-title animate-on-scroll">Let's Build Something Great Together.</h2>
             <div className="contact-container">
-                <div className="contact-text animate-on-scroll">
-                    <p>Have a question or a project in mind? I'd love to hear from you. Feel free to send me a message.</p>
+                <div className="contact-info animate-on-scroll">
+                    <div className="contact-socials">
+                        <a href={`mailto:${portfolioConfig.contact.gmail}`} title="Email"><GmIcon /></a>
+                        <a href="https://linkedin.com/in/seminiherath" target="_blank" rel="noopener noreferrer" title="LinkedIn"><LiIcon /></a>
+                        <a href={portfolioConfig.socials.github} target="_blank" rel="noopener noreferrer" title="GitHub"><GhIcon /></a>
+                        <a href={`https://wa.me/${portfolioConfig.contact.whatsapp}`} target="_blank" rel="noopener noreferrer" title="WhatsApp"><WaIcon /></a>
+                    </div>
                 </div>
-                <form className="contact-form animate-on-scroll" style={{ animationDelay: '0.2s' }} onSubmit={handleFormSubmit}>
-                    <input type="text" name="name" placeholder="Your Name" required />
-                    <input type="email" name="email" placeholder="Your Email" required />
-                    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                    <button type="submit" className="btn">Send Message</button>
-                </form>
             </div>
         </section>
     );
