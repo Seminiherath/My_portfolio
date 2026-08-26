@@ -1,4 +1,4 @@
-﻿// App.jsx
+// App.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import './styles.css';
 import profile_image from '../src/assets/me.jpg';
