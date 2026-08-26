@@ -102,6 +102,20 @@ const portfolioConfig = {
       figmaLink: "https://www.figma.com/design/yFd1DNQ5jcjdZqsyerbiaF/EcoSync-App?node-id=24-66&t=kHiFK6OTIVcx4ALH-1",
     },
   ],
+  experience: [
+    {
+      organization: "IEEE Computer Society Student Branch Chapter of SUSL",
+      role: "Graphic Designer",
+    },
+    {
+      organization: "Faculty of Computing - Sabaragamuwa University of Sri Lanka",
+      role: "Graphic Designer",
+    },
+    {
+      organization: "Rotaract Club of Sabaragamuwa University of Sri Lanka",
+      role: "Graphic Designer",
+    }
+  ],
 };
 
 // --- Custom Hooks ---
@@ -136,6 +150,7 @@ const NAV_LINKS = [
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
   { id: 'work', label: 'Work' },
+  { id: 'experience', label: 'Experience' },
   { id: 'contact', label: 'Contact' },
 ];
 
@@ -348,20 +363,32 @@ const Work = () => (
 
     {/* --- UI Designs --- */}
     <h3 className="work-subsection-title animate-on-scroll">UI Designs</h3>
-    <div className="ui-designs-grid animate-on-scroll">
-      {[1, 2, 3, 4, 5, 6].map(i => (
-        <div className="ui-design-card" key={i}>
-          <div className="ui-design-placeholder">
-            <span className="placeholder-coming-soon">Coming Soon</span>
-          </div>
-        </div>
-      ))}
+    <div className="work-marquee-container animate-on-scroll">
+      <div className="work-marquee-track ui-track">
+        {[...Array(3)].map((_, setIndex) => (
+          [
+            { src: '/images/ui/ui_trustbubble.png', label: 'TrustBubble App' },
+            { src: '/images/ui/ui_ecosync.png', label: 'EcoSync Dashboard' },
+            { src: '/images/ui/ui_ecosync_socket.png', label: 'EcoSync Smart Socket' },
+            { src: '/images/ui/ui_ontime.png', label: 'OnTime App' },
+            { src: '/images/ui/ui_agelink.png', label: 'AgeLink App' },
+            { src: '/images/ui/ui_dressar_signup.png', label: 'DressAR Sign Up' },
+          ].map((item, i) => (
+            <div className="work-marquee-item ui-mockup" key={`${setIndex}-${i}`}>
+              <img src={item.src} alt={item.label} />
+              <div className="work-marquee-overlay">
+                <span>{item.label}</span>
+              </div>
+            </div>
+          ))
+        ))}
+      </div>
     </div>
 
     {/* --- Graphic Designs (Auto-Scrolling Marquee) --- */}
     <h3 className="work-subsection-title animate-on-scroll">Graphic Designs</h3>
-    <div className="graphic-marquee animate-on-scroll">
-      <div className="graphic-marquee-track">
+    <div className="work-marquee-container animate-on-scroll">
+      <div className="work-marquee-track graphic-track">
         {[...Array(3)].map((_, setIndex) => (
           [
             { src: '/images/graphics/birthday_card.jpg', label: 'Birthday Card Design' },
@@ -369,10 +396,15 @@ const Work = () => (
             { src: '/images/graphics/blood_donation.jpg', label: 'Blood Donation Flyer' },
             { src: '/images/graphics/xmasora_coming_soon.jpg', label: 'Xmasora — Coming Soon' },
             { src: '/images/graphics/xmasora_countdown.jpg', label: 'Xmasora — Countdown' },
+            { src: '/images/graphics/duruthu_poya.jpg', label: 'Duruthu Poya Day' },
+            { src: '/images/graphics/embrace_rotaract.jpg', label: 'Embrace (Rotaract)' },
+            { src: '/images/graphics/science_book_cover.jpg', label: 'Science Grade 7 Book Cover' },
+            { src: '/images/graphics/calendar_jan_apr.jpg', label: '2026 Calendar (Jan-Apr)' },
+            { src: '/images/graphics/calendar_may_aug.jpg', label: '2026 Calendar (May-Aug)' },
           ].map((item, i) => (
-            <div className="graphic-marquee-item" key={`${setIndex}-${i}`}>
+            <div className="work-marquee-item" key={`${setIndex}-${i}`}>
               <img src={item.src} alt={item.label} />
-              <div className="graphic-design-overlay">
+              <div className="work-marquee-overlay">
                 <span>{item.label}</span>
               </div>
             </div>
@@ -383,6 +415,19 @@ const Work = () => (
   </section>
 );
 
+const Experience = () => (
+  <section id="experience" className="experience section">
+    <h2 className="section-title animate-on-scroll">Experience & Volunteering</h2>
+    <div className="experience-list animate-on-scroll">
+      {portfolioConfig.experience.map((exp, index) => (
+        <div className="experience-item" key={index}>
+          <h3 className="exp-role">{exp.role}</h3>
+          <p className="exp-org">{exp.organization}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+);
 const Contact = () => (
   <section id="contact" className="contact section">
     <h2 className="section-title animate-on-scroll">Let's Build Something Great Together.</h2>
@@ -430,6 +475,7 @@ function App() {
         <About />
         <Skills />
         <Work />
+        <Experience />
         <Contact />
       </main>
       <Footer />

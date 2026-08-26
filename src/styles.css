@@ -128,46 +128,17 @@ a:hover ~ .cursor-outline, button:hover ~ .cursor-outline { border-color: var(--
   gap: 2rem;
 }
 
-/* 6-Column UI Designs Grid (portrait cards) */
-.ui-designs-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1.2rem;
-}
-.ui-design-card {
-  border-radius: var(--card-radius);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.ui-design-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-}
-.ui-design-placeholder {
-  background: #e9ecef;
-  border-radius: var(--card-radius);
-  aspect-ratio: 3 / 4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.ui-design-card img {
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  display: block;
-}
-
-/* Graphic Designs — Auto-Scrolling Marquee */
-.graphic-marquee {
+/* ================================================================
+   WORK MARQUEE COMPONENT
+   ================================================================ */
+.work-marquee-container {
   overflow: hidden;
   position: relative;
   width: 100%;
   padding: 0.5rem 0;
 }
-.graphic-marquee::before,
-.graphic-marquee::after {
+.work-marquee-container::before,
+.work-marquee-container::after {
   content: "";
   position: absolute;
   top: 0;
@@ -176,24 +147,30 @@ a:hover ~ .cursor-outline, button:hover ~ .cursor-outline { border-color: var(--
   z-index: 2;
   pointer-events: none;
 }
-.graphic-marquee::before { left: 0; background: linear-gradient(to right, var(--background-color), transparent); }
-.graphic-marquee::after  { right: 0; background: linear-gradient(to left, var(--background-color), transparent); }
+.work-marquee-container::before { left: 0; background: linear-gradient(to right, var(--background-color), transparent); }
+.work-marquee-container::after  { right: 0; background: linear-gradient(to left, var(--background-color), transparent); }
 
-.graphic-marquee-track {
+.work-marquee-track {
   display: flex;
-  gap: 1.5rem;
-  animation: graphicScroll 40s linear infinite;
+  gap: 1rem;
+  animation: workMarqueeScroll linear infinite;
   width: max-content;
 }
-.graphic-marquee:hover .graphic-marquee-track {
+.ui-track {
+  animation-duration: 20s;
+}
+.graphic-track {
+  animation-duration: 50s;
+}
+.work-marquee-container:hover .work-marquee-track {
   animation-play-state: paused;
 }
-@keyframes graphicScroll {
+@keyframes workMarqueeScroll {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-33.3333%); }
 }
 
-.graphic-marquee-item {
+.work-marquee-item {
   flex-shrink: 0;
   height: 240px;
   border-radius: var(--card-radius);
@@ -202,16 +179,31 @@ a:hover ~ .cursor-outline, button:hover ~ .cursor-outline { border-color: var(--
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.graphic-marquee-item:hover {
+.work-marquee-item:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
-.graphic-marquee-item img {
+.work-marquee-item img,
+.work-marquee-item-placeholder {
   height: 100%;
   width: auto;
   display: block;
 }
-.graphic-design-overlay {
+.ui-mockup {
+  aspect-ratio: 9 / 19.5;
+}
+.ui-mockup img {
+  width: 100%;
+  object-fit: cover;
+}
+.work-marquee-item-placeholder {
+  background: #e9ecef;
+  aspect-ratio: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.work-marquee-overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
@@ -223,8 +215,8 @@ a:hover ~ .cursor-outline, button:hover ~ .cursor-outline { border-color: var(--
   transition: opacity 0.3s ease;
   border-radius: var(--card-radius);
 }
-.graphic-marquee-item:hover .graphic-design-overlay { opacity: 1; }
-.graphic-design-overlay span {
+.work-marquee-item:hover .work-marquee-overlay { opacity: 1; }
+.work-marquee-overlay span {
   color: #fff;
   font-family: var(--font-heading);
   font-size: 0.95rem;
@@ -421,6 +413,39 @@ a:hover ~ .cursor-outline, button:hover ~ .cursor-outline { border-color: var(--
 }
 
 /* ================================================================
+   EXPERIENCE SECTION
+   ================================================================ */
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.experience-item {
+  background: var(--card-bg);
+  padding: 1.5rem 2rem;
+  border-radius: var(--card-radius);
+  border-left: 4px solid var(--primary-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  text-align: left;
+}
+.experience-item:hover {
+  transform: translateX(5px);
+}
+.exp-role {
+  font-size: 1.25rem;
+  color: var(--primary-color);
+  margin-bottom: 0.25rem;
+}
+.exp-org {
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* ================================================================
    CONTACT
    ================================================================ */
 .contact-container { max-width: 800px; margin: 0 auto; text-align: center; }
@@ -450,7 +475,6 @@ a:hover ~ .cursor-outline, button:hover ~ .cursor-outline { border-color: var(--
 @media (max-width: 900px) {
   .navbar { padding: 1.2rem 2rem; }
   .projects-grid-2col { grid-template-columns: 1fr; }
-  .ui-designs-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 768px) {
   .nav-menu { display: none; }
@@ -461,11 +485,9 @@ a:hover ~ .cursor-outline, button:hover ~ .cursor-outline { border-color: var(--
   .projects-grid-2col { grid-template-columns: 1fr; }
   .proj-header-row { flex-direction: column; gap: 0.6rem; }
   .proj-link-icons { align-self: flex-start; }
-  .ui-designs-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 480px) {
   .proj-info { padding: 1.2rem; }
   .proj-name { font-size: 1.5rem; }
-  .ui-designs-grid { grid-template-columns: repeat(2, 1fr); }
-  .graphic-marquee-item { height: 180px; }
+  .work-marquee-item { height: 180px; }
 }
