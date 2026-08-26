@@ -149,7 +149,7 @@ const NAV_LINKS = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'skills', label: 'Skills' },
-  { id: 'work', label: 'Work' },
+  { id: 'work', label: 'Works' },
   { id: 'experience', label: 'Experience' },
   { id: 'contact', label: 'Contact' },
 ];
@@ -232,7 +232,7 @@ const Home = () => (
         <p className="home-tagline">{portfolioConfig.subHeadline}</p>
       </div>
       <div className="home-buttons animate-on-scroll" style={{ animationDelay: '0.3s' }}>
-        <a href="#projects" className="btn">Explore My Work</a>
+        <a href="#work" className="btn">Explore My Work</a>
         <a href="#resume" className="btn btn-secondary">View Resume</a>
       </div>
       <div className="home-socials animate-on-scroll" style={{ animationDelay: '0.4s' }}>
